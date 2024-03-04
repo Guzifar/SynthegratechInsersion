@@ -57,7 +57,7 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             reader.close();
                             inputStream.close();
-                            Log.d("Registration Response", response.toString()); // Log response for debugging
+                            Log.d("Registration Response", response.toString());
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
@@ -106,7 +106,6 @@ public class RegisterActivity extends AppCompatActivity {
                 thread.start();
             }
         });
-
 
         lButton.setOnClickListener(new View.OnClickListener() {
             @Override

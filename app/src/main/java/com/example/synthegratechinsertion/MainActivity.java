@@ -13,10 +13,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button rButton = findViewById(R.id.loginRegisterButton);
+        Button fpButton = findViewById(R.id.forgotPasswordButton);
         rButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+            }
+        });
+        fpButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this,ForgotPassword.class));
             }
         });
     }

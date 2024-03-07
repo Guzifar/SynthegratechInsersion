@@ -15,7 +15,10 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".ChangePassword"></activity>
+        <activity
+            android:name=".UserPanel"
+            android:label="@string/title_activity_user_panel"></activity>
+        <activity android:name=".ChangePassword" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".MainActivity">

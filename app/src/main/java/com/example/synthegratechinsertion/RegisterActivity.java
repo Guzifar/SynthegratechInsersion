@@ -40,7 +40,7 @@ public class RegisterActivity extends AppCompatActivity {
                     public void run() {
                         HttpURLConnection urlConnection = null;
                         try {
-                            URL url = new URL("http://127.0.0.1/synthegratech/registration.php");
+                            URL url = new URL("http://10.0.2.2/synthegratech/registration.php");
                             urlConnection = (HttpURLConnection) url.openConnection();
                             urlConnection.setRequestMethod("POST");
                             urlConnection.setDoOutput(true);

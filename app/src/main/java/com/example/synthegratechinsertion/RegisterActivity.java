@@ -72,6 +72,7 @@ public class RegisterActivity extends AppCompatActivity {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
+                                            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
                                         }
                                     });
                                     AlertDialog dialog = builder.create();

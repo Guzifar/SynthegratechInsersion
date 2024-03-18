@@ -1,6 +1,8 @@
 package com.example.synthegratechinsertion;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +19,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
-
+    StringBuilder response = new StringBuilder();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +50,8 @@ public class MainActivity extends AppCompatActivity {
                             outputStream.close();
                             InputStream inputStream = urlConnection.getInputStream();
                             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
-                            final StringBuilder response = new StringBuilder();
+                            response = new StringBuilder();
+                            response = new StringBuilder();
                             String line;
                             while ((line = reader.readLine()) != null) {
                                 response.append(line);
@@ -73,7 +76,14 @@ public class MainActivity extends AppCompatActivity {
                                             startActivity(intent);
                                         }
                                     } else {
-                                        Toast.makeText(MainActivity.this, "Login failed. Please try again.", Toast.LENGTH_SHORT).show();
+                                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                        builder.setMessage("Login failed. "+response.toString())
+                                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int id) {
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+                                        builder.create().show();
                                     }
                                 }
                             });
@@ -82,7 +92,14 @@ public class MainActivity extends AppCompatActivity {
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
-                                    Toast.makeText(MainActivity.this, "Login failed! Please try again later.", Toast.LENGTH_SHORT).show();
+                                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                                    builder.setMessage("Login failed! Please try again later. Response: " + response.toString())
+                                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                                public void onClick(DialogInterface dialog, int id) {
+                                                    dialog.dismiss();
+                                                }
+                                            });
+                                    builder.create().show();
                                 }
                             });
                         } finally {
@@ -95,6 +112,8 @@ public class MainActivity extends AppCompatActivity {
                 thread.start();
             }
         });
+
+
         rButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

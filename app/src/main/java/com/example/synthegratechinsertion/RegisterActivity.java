@@ -57,22 +57,24 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             reader.close();
                             inputStream.close();
-                            Log.d("Registration Response", response.toString());
+                            Log.d("Registration Response", response.toString().trim());
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setTitle("Registration Status");
-                                    if (response.toString().trim().equals("Registration successful")) {
+                                    if (response.toString().trim().equals("Registered! you can now login")) {
                                         builder.setMessage("Registration successful!");
                                     } else {
-                                        builder.setMessage(response.toString());
+                                        builder.setMessage("Registration failed! Please try again later.");
                                     }
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
-                                            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                                            if (response.toString().trim().equals("Registered! you can now login")) {
+                                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                            }
                                         }
                                     });
                                     AlertDialog dialog = builder.create();

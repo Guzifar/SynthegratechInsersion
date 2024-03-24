@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                                             bundle.putString("name", name);
                                             bundle.putString("email", email);
                                             bundle.putString("type", type);
-                                            Intent intent = new Intent(MainActivity.this, Dashboard.class);
+                                            Intent intent = new Intent(MainActivity.this, Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }

@@ -74,6 +74,7 @@ public class RegisterActivity extends AppCompatActivity {
                                             dialog.dismiss();
                                             if (response.toString().trim().equals("Registered! you can now login")) {
                                                 startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                                overridePendingTransition(0, 0);
                                             }
                                         }
                                     });
@@ -114,6 +115,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
     }

@@ -30,6 +30,7 @@ public class Dashboard extends AppCompatActivity {
                 Intent intent = new Intent(Dashboard.this, Account.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtras(bundle);
                 startActivity(intent);
+                overridePendingTransition(0, 0);
             }
         });
     }

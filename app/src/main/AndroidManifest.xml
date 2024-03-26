@@ -15,13 +15,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
         tools:targetApi="n">
-        <activity android:name=".Account"></activity>
-        <activity android:name=".AddExpense" />
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".Account" />
         <activity android:name=".Dashboard" />
         <activity android:name=".ChangePassword" />
         <activity android:name=".ForgotPassword" />
         <activity android:name=".RegisterActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

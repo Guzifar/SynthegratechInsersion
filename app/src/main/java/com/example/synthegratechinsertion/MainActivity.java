@@ -72,12 +72,13 @@ public class MainActivity extends AppCompatActivity {
                                             bundle.putString("email", email);
                                             bundle.putString("type", type);
                                             Intent intent = new Intent(MainActivity.this, Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                                            overridePendingTransition(0, 0);
                                             intent.putExtras(bundle);
                                             startActivity(intent);
                                         }
                                     } else {
                                         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                                        builder.setMessage("Login failed. "+response.toString())
+                                        builder.setMessage(response.toString())
                                                 .setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                                     public void onClick(DialogInterface dialog, int id) {
                                                         dialog.dismiss();
@@ -118,12 +119,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,RegisterActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
         fpButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(MainActivity.this,ForgotPassword.class));
+                overridePendingTransition(0, 0);
             }
         });
     }

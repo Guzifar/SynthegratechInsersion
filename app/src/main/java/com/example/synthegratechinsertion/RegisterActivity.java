@@ -3,13 +3,15 @@ package com.example.synthegratechinsertion;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -57,22 +59,25 @@ public class RegisterActivity extends AppCompatActivity {
                             }
                             reader.close();
                             inputStream.close();
-                            Log.d("Registration Response", response.toString());
+                            Log.d("Registration Response", response.toString().trim());
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     AlertDialog.Builder builder = new AlertDialog.Builder(RegisterActivity.this);
                                     builder.setTitle("Registration Status");
-                                    if (response.toString().trim().equals("Registration successful")) {
+                                    if (response.toString().trim().equals("Registered! you can now login")) {
                                         builder.setMessage("Registration successful!");
                                     } else {
-                                        builder.setMessage(response.toString());
+                                        builder.setMessage("Registration failed! Please try again later.");
                                     }
                                     builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {
                                             dialog.dismiss();
-                                            startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                                            if (response.toString().trim().equals("Registered! you can now login")) {
+                                                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                                                overridePendingTransition(0, 0);
+                                            }
                                         }
                                     });
                                     AlertDialog dialog = builder.create();
@@ -112,6 +117,7 @@ public class RegisterActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(RegisterActivity.this,MainActivity.class));
+                overridePendingTransition(0, 0);
             }
         });
     }

@@ -11,13 +11,13 @@ $name = $_POST['name'];
 $email = $_POST['email'];
 $password = $_POST['password'];
 $type = "user";
-$stmt = $conn->prepare("INSERT INTO useraccounts (name, email, password,type) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("sss", $name, $email, $password,$type);
+$stmt = $conn->prepare("INSERT INTO useraccounts (name, email, password, type) VALUES (?, ?, ?, ?)");
+$stmt->bind_param("ssss", $name, $email, $password, $type);
 
 if ($stmt->execute() === TRUE) {
     echo "Registered! you can now login";
 } else {
-    echo "Error: " . $stmt->error;
+    echo "Registration failed! Please try again later.";
 }
 $stmt->close();
 $conn->close();

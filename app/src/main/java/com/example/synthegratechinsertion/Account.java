@@ -41,6 +41,7 @@ public class Account extends AppCompatActivity {
         nameField.setText(name);
         emailField.setText(email);
         ImageButton dButton = findViewById(R.id.homeButton);
+        ImageButton sButton = findViewById(R.id.statButton);
         dButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -49,6 +50,19 @@ public class Account extends AppCompatActivity {
                 bundle.putString("email", email);
                 bundle.putString("type", type);
                 Intent intent = new Intent(Account.this, Dashboard.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+                intent.putExtras(bundle);
+                startActivity(intent);
+                overridePendingTransition(0, 0);
+            }
+        });
+        sButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle1 = new Bundle();
+                bundle.putString("name", name);
+                bundle.putString("email", email);
+                bundle.putString("type", type);
+                Intent intent = new Intent(Account.this, Statistics.class).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
                 intent.putExtras(bundle);
                 startActivity(intent);
                 overridePendingTransition(0, 0);

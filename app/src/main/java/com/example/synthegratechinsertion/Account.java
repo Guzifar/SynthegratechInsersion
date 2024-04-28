@@ -27,6 +27,7 @@ public class Account extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account);
+        getSupportActionBar().setTitle("Account Details");
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             name = bundle.getString("name");
